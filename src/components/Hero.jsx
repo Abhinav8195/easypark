@@ -1,6 +1,8 @@
     import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
     const Hero = () => {
+        const navigate = useNavigate();
     return (
         <section id="home" className="min-h-screen flex items-center relative grid-bg ">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
@@ -24,7 +26,7 @@
                         </div>
                         
                         <div className="fade-in flex flex-col sm:flex-row gap-6">
-                            <button className="btn-modern flex items-center justify-center">
+                            <button onClick={()=>navigate('/create')} className="btn-modern flex items-center justify-center">
                                 <span className="mr-3">→</span>
                                 Scan & Create Profile
                             </button>

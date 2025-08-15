@@ -991,6 +991,339 @@ html {
         html {
             scroll-behavior: smooth;
         }
+
+         .account-card {
+            background: rgba(92, 78, 78, 0.08);
+            border: 1px solid rgba(152, 134, 134, 0.15);
+            border-radius: 24px;
+            padding: 48px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(152, 134, 134, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .account-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--light-gray), transparent);
+            opacity: 0.8;
+        }
+        
+        .account-card:hover {
+            background: rgba(92, 78, 78, 0.12);
+            transform: translateY(-4px);
+            border-color: rgba(152, 134, 134, 0.3);
+            box-shadow: 0 30px 60px rgba(152, 134, 134, 0.2), 0 0 50px rgba(209, 208, 208, 0.1);
+        }
+        
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 24px;
+            animation: floatIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes floatIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--light-gray);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(92, 78, 78, 0.1);
+            border: 1px solid rgba(152, 134, 134, 0.2);
+            border-radius: 12px;
+            color: var(--light-gray);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--light-gray);
+            background: rgba(92, 78, 78, 0.15);
+            box-shadow: 
+                0 0 30px rgba(209, 208, 208, 0.2),
+                0 0 60px rgba(209, 208, 208, 0.1),
+                inset 0 0 20px rgba(209, 208, 208, 0.05);
+            transform: scale(1.02) translateY(-2px);
+            animation: inputPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes inputPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 30px rgba(209, 208, 208, 0.2),
+                    0 0 60px rgba(209, 208, 208, 0.1),
+                    inset 0 0 20px rgba(209, 208, 208, 0.05);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 40px rgba(209, 208, 208, 0.3),
+                    0 0 80px rgba(209, 208, 208, 0.15),
+                    inset 0 0 30px rgba(209, 208, 208, 0.08);
+            }
+        }
+        
+        .form-input::placeholder {
+            color: var(--medium-gray);
+        }
+        
+        .form-input.error {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .form-input.success {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        /* QR Code Animation */
+        .qr-animation {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--light-gray), var(--medium-gray));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: qrPulse 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes qrPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(209, 208, 208, 0.3);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 40px rgba(209, 208, 208, 0.5);
+            }
+        }
+        
+        .qr-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: qrScan 2s linear infinite;
+        }
+        
+        @keyframes qrScan {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        /* Success Animation */
+        .success-animation {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10B981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: successPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes successPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .fade-in.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .slide-in.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .scale-in.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Navigation */
+        .nav-modern {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(152, 134, 134, 0.1);
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: rgba(92, 78, 78, 0.05);
+            border: 1px solid rgba(152, 134, 134, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(209, 208, 208, 0.1) 0%, transparent 70%);
+            animation: cardGlow 4s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        .info-card:nth-child(1)::before {
+            animation-delay: 0s;
+        }
+        
+        .info-card:nth-child(2)::before {
+            animation-delay: 1.3s;
+        }
+        
+        .info-card:nth-child(3)::before {
+            animation-delay: 2.6s;
+        }
+        
+        @keyframes cardGlow {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+        
+        .info-card:hover {
+            background: rgba(92, 78, 78, 0.08);
+            border-color: rgba(152, 134, 134, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(209, 208, 208, 0.15);
+        }
+        
+        .info-card:hover::before {
+            animation-duration: 2s;
+            opacity: 0.8;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .account-card {
+                padding: 32px 24px;
+                margin: 20px;
+            }
+            
+            .form-input {
+                padding: 14px 16px;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--medium-gray);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--light-gray);
+        }
+        
+        /* Validation Messages */
+        .validation-message {
+            font-size: 12px;
+            margin-top: 4px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .validation-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .validation-message.error {
+            color: #ef4444;
+        }
+        
+        .validation-message.success {
+            color: #10b981;
+        }
+        
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
