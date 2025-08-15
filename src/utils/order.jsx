@@ -116,46 +116,49 @@ export const initorder = () => {
     });
 
     function updateStep() {
-         window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-        document.getElementById('package-selection').style.display = 'none';
-        document.getElementById('personal-info').style.display = 'none';
-        document.getElementById('shipping-info').style.display = 'none';
-        document.getElementById('billing-info').style.display = 'none';
+    const sections = ['package-selection', 'personal-info', 'shipping-info', 'billing-info'];
+    sections.forEach(id => document.getElementById(id).style.display = 'none');
 
-        for (let i = 1; i <= 3; i++) {
-            const stepNum = document.getElementById(`step${i}`);
-            const stepText = document.getElementById(`step${i}-text`);
-            if (stepNum && stepText) {
-                if (i <= currentStep) {
-                    stepNum.classList.add('active');
-                    stepText.classList.add('active');
-                } else {
-                    stepNum.classList.remove('active');
-                    stepText.classList.remove('active');
-                }
+    // Update progress bar
+    for (let i = 1; i <= 3; i++) {
+        const stepNum = document.getElementById(`step${i}`);
+        const stepText = document.getElementById(`step${i}-text`);
+        if (stepNum && stepText) {
+            if (i <= currentStep) {
+                stepNum.classList.add('active');
+                stepText.classList.add('active');
+            } else {
+                stepNum.classList.remove('active');
+                stepText.classList.remove('active');
             }
-        }
-
-        if (currentStep === 1) {
-            document.getElementById('package-selection').style.display = 'block';
-            prevBtn.style.display = 'none';
-            nextBtn.textContent = 'Continue →';
-        } else if (currentStep === 2) {
-            document.getElementById('personal-info').style.display = 'block';
-            prevBtn.style.display = 'inline-block';
-            nextBtn.textContent = 'Continue →';
-        } else if (currentStep === 3) {
-            document.getElementById('shipping-info').style.display = 'block';
-            if (!document.getElementById('sameAsShipping').classList.contains('checked')) {
-                document.getElementById('billing-info').style.display = 'block';
-            }
-            prevBtn.style.display = 'inline-block';
-            nextBtn.textContent = 'Place Order';
         }
     }
+
+    let activeSectionId = '';
+    if (currentStep === 1) {
+        activeSectionId = 'package-selection';
+        prevBtn.style.display = 'none';
+        nextBtn.textContent = 'Continue →';
+    } else if (currentStep === 2) {
+        activeSectionId = 'personal-info';
+        prevBtn.style.display = 'inline-block';
+        nextBtn.textContent = 'Continue →';
+    } else if (currentStep === 3) {
+        activeSectionId = 'shipping-info';
+        if (!document.getElementById('sameAsShipping').classList.contains('checked')) {
+            document.getElementById('billing-info').style.display = 'block';
+        }
+        prevBtn.style.display = 'inline-block';
+        nextBtn.textContent = 'Place Order';
+    }
+
+    if (activeSectionId) {
+        const el = document.getElementById(activeSectionId);
+        el.style.display = 'block';
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
 
     function updateOrderSummary() {
         if (!selectedPackage) return;

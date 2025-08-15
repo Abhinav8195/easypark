@@ -31,8 +31,8 @@ const BuyHero = () => {
        <div className="max-w-4xl mx-auto mb-12 px-4">
   <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-8 space-y-4 sm:space-y-0">
     <div className="progress-step flex flex-col sm:flex-row items-center sm:space-x-2">
-      <div className="step-number active">1</div>
-      <div className="step-text active text-center sm:text-left">Select Package</div>
+      <div className="step-number active" id="step1">1</div>
+      <div className="step-text active text-center sm:text-left" id="step1-text">Select Package</div>
     </div>
     <div className="progress-step flex flex-col sm:flex-row items-center sm:space-x-2">
       <div className="step-number" id="step2">2</div>
