@@ -1,8 +1,14 @@
 import React, { useEffect } from 'react'
-import './global.css';
 import { initAnimations } from '../utils/animations';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
+     const navigate = useNavigate();
+
+    const handleNavigation = () => {
+    navigate('/buysticker'); 
+  };
+
      useEffect(() => {
     initAnimations();
   }, []);
@@ -25,7 +31,7 @@ const Navigation = () => {
                     <a href="#testimonials" className="text-gray-300 hover:text-white font-medium transition-colors">Reviews</a>
                 </div>
                 
-                <button className="btn-modern">
+                <button onClick={handleNavigation} className="btn-modern">
                     Get Started
                 </button>
             </div>
