@@ -3,16 +3,18 @@ import {initorder} from '../../utils/order'
 
 const BuyHero = () => {
 
-      useEffect(() => {
+     useEffect(() => {
+    setTimeout(() => {
         initorder();
-      }, []);
+    }, 0); 
+}, []);
     
   return (
     <div>
          <div className="pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
             {/* Header */}
-        <div className="text-center mb-16 ">
+        <div className="text-center mb-16 fade-in ">
           <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
             Order Your{" "}
             <span className="bg-gradient-to-r from-gray-300 to-gray-500 bg-clip-text text-transparent">
@@ -25,7 +27,7 @@ const BuyHero = () => {
         </div>
 
             {/* Progress Steps */}
-        <div className="max-w-4xl mx-auto mb-12 ">
+        <div className="max-w-4xl mx-auto mb-12 fade-in">
           <div className="flex justify-center space-x-8">
             <div className="progress-step">
               <div className="step-number active">1</div>
@@ -46,7 +48,7 @@ const BuyHero = () => {
                 {/* <!-- Left Column - Order Form --> */}
                 <div className="lg:col-span-2">
                     {/* <!-- Package Selection --> */}
-                    <div className="form-section " id="package-selection">
+                    <div className="form-section slide-in " id="package-selection">
                         <h3>Choose Your Package</h3>
                         <div className="grid md:grid-cols-3 gap-6">
                             <div className="package-card" data-package="basic" data-price="199" data-stickers="1">
@@ -93,7 +95,7 @@ const BuyHero = () => {
                     </div>
 
                     {/* <!-- Personal Information --> */}
-                    <div className="form-section" id="personal-info" style={{ display: "none" }}>
+                    <div className="form-section scale-in" id="personal-info" style={{ display: "none" }}>
                         <h3>Personal Information</h3>
                         <div className="grid md:grid-cols-2 gap-6"> 
                             <div className="form-group">
@@ -116,7 +118,7 @@ const BuyHero = () => {
                     </div>
 
 
-                    <div className="form-section " id="shipping-info" style={{ display: "none" }}>
+                    <div className="form-section scale-in " id="shipping-info" style={{ display: "none" }}>
                         <h3>Shipping Address</h3>
                         <div className="grid gap-6">
                             <div className="form-group">
@@ -286,7 +288,7 @@ const BuyHero = () => {
                 </div>
                  {/* <!-- Right Column - Order Summary --> */}
                 <div className="lg:col-span-1">
-                    <div className="order-summary ">
+                    <div className="order-summary fade-in ">
                         <h3 className="text-2xl font-bold text-white mb-6">Order Summary</h3>
                         
                         <div id="selected-package" style={{ display: "none" }}>
