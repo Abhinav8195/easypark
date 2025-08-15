@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import {initorder} from '../../utils/order'
+import ShinyText from './ShinyText.jsx';
 
 const BuyHero = () => {
 
@@ -53,10 +54,11 @@ const BuyHero = () => {
                     <div className="form-section slide-in " id="package-selection">
                         <h3>Choose Your Package</h3>
                         <div className="grid md:grid-cols-3 gap-6">
-                            <div className="package-card" data-package="basic" data-price="199" data-stickers="1">
+                            <div className="package-card" data-package="basic" data-price="225" data-stickers="1">
                                 <div className="text-center">
                                     <h4 className="text-xl font-bold text-white mb-2">Basic</h4>
-                                    <div className="text-3xl font-bold text-white mb-4">₹199</div>
+                                    <div className="text-3xl font-bold text-white mb-4">₹225</div>
+                                    <ShinyText text="10% cheaper than competitor" disabled={false} speed={3} className='custom-class mb-4 text-sm' />
                                     <ul className="text-sm space-y-2 text-gray-400">
                                         <li>• 1 Premium QR Sticker</li>
                                         <li>• Basic Profile</li>
@@ -66,10 +68,11 @@ const BuyHero = () => {
                                 </div>
                             </div>
                             
-                            <div className="package-card featured" data-package="family" data-price="499" data-stickers="5">
+                            <div className="package-card featured" data-package="family" data-price="1050" data-stickers="5">
                                 <div className="text-center">
                                     <h4 className="text-xl font-bold text-white mb-2">Family</h4>
-                                    <div className="text-3xl font-bold text-white mb-4">₹499</div>
+                                    <div className="text-3xl font-bold text-white mb-4">₹1,050</div>
+                                     <ShinyText text="Save ₹200+ vs buying singles" disabled={false} speed={3} className='custom-class mb-4 text-sm' />
                                     <ul className="text-sm space-y-2 text-gray-400">
                                         <li>• 5 Premium QR Stickers</li>
                                         <li>• Advanced Features</li>
@@ -80,12 +83,13 @@ const BuyHero = () => {
                                 </div>
                             </div>
                             
-                            <div className="package-card" data-package="business" data-price="999" data-stickers="15">
+                            <div className="package-card" data-package="business" data-price="1950" data-stickers="10">
                                 <div className="text-center">
                                     <h4 className="text-xl font-bold text-white mb-2">Business</h4>
-                                    <div className="text-3xl font-bold text-white mb-4">₹999</div>
+                                    <div className="text-3xl font-bold text-white mb-4">₹1,950</div>
+                                    <ShinyText text="Save ₹550+ vs competitor" disabled={false} speed={3} className='custom-class mb-4 text-sm' />
                                     <ul className="text-sm space-y-2 text-gray-400">
-                                        <li>• 15 Premium Stickers</li>
+                                        <li>• 10 Premium Stickers</li>
                                         <li>• Business Features</li>
                                         <li>• All Notifications</li>
                                         <li>• 24/7 Support</li>
@@ -283,8 +287,11 @@ const BuyHero = () => {
                             <p className="text-sm text-gray-400">Order ID: <span className="text-white font-mono" id="orderId">#EP2024001</span></p>
                             <p className="text-sm text-gray-400">Estimated Delivery: <span className="text-white">3-5 business days</span></p>
                         </div>
-                        <button className="btn-modern" onclick="window.location.href='#'">
-                            Track Your Order
+                        <button
+                        className="btn-modern"
+                        onClick={() => { window.location.href = '#'; }}
+                        >
+                        Track Your Order
                         </button>
                     </div>
                 </div>
@@ -305,22 +312,23 @@ const BuyHero = () => {
                         
                         <div className="space-y-4 mb-6">
                             <div className="summary-item">
-                                <span className="text-gray-400">Package Price</span>
+                                <span className="text-gray-400">Package Price (Excl. GST)</span>
                                 <span className="text-white" id="package-price">₹0</span>
-                            </div>
-                            <div className="summary-item">
-                                <span className="text-gray-400">Shipping</span>
-                                <span className="text-white">₹49</span>
                             </div>
                             <div className="summary-item">
                                 <span className="text-gray-400">GST (18%)</span>
                                 <span className="text-white" id="gst-amount">₹0</span>
                             </div>
                             <div className="summary-item">
-                                <span className="text-white">Total</span>
+                                <span className="text-gray-400">Shipping</span>
+                                <span className="text-white">₹20</span>
+                            </div>
+                            <div className="summary-item">
+                                <span className="text-white font-semibold">Total </span>
                                 <span className="text-white text-xl" id="total-amount">₹0</span>
                             </div>
                         </div>
+
                         
                         <div className="mb-6">
                             <h4 className="font-semibold text-white mb-3">What's Included:</h4>

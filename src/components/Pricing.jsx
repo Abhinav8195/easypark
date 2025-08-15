@@ -1,6 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Pricing = () => {
+     const navigate = useNavigate();
+     const handleClick = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  console.log("Button clicked: Get Basic");
+  navigate("/buysticker");
+};
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+            observer.unobserve(entry.target); // Run once
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document
+      .querySelectorAll(
+        ".pricing-slide-left, .pricing-scale-up, .pricing-slide-right, .fade-in-up, .price-bounce, .feature-slide-in, .checkmark-bounce, .button-float"
+      )
+      .forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="pricing" className="section">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -19,7 +50,7 @@ const Pricing = () => {
             <div className="pricing-header fade-in-up">
               <h3 className="text-2xl font-bold text-white mb-4">Basic</h3>
               <div className="mb-8 price-bounce">
-                <span className="text-5xl font-bold text-white">₹199</span>
+                <span className="text-5xl font-bold text-white">₹230</span>
                 <span style={{ color: 'var(--medium-gray)' }}>/sticker</span>
               </div>
             </div>
@@ -61,7 +92,7 @@ const Pricing = () => {
                 <span style={{ color: 'var(--light-gray)' }}>Email Support</span>
               </li>
             </ul>
-            <button className="w-full btn-outline button-float">Get Basic</button>
+            <button id='a' onClick={handleClick} className="w-full btn-outline button-float">Get Basic</button>
           </div>
 
           {/* Family Plan */}
@@ -69,7 +100,7 @@ const Pricing = () => {
             <div className="pricing-header fade-in-up">
               <h3 className="text-2xl font-bold text-white mb-4">Family</h3>
               <div className="mb-8 price-bounce">
-                <span className="text-5xl font-bold text-white">₹499</span>
+                <span className="text-5xl font-bold text-white">₹1,050</span>
                 <span style={{ color: 'var(--medium-gray)' }}>/pack</span>
               </div>
             </div>
@@ -120,7 +151,7 @@ const Pricing = () => {
                 <span style={{ color: 'var(--light-gray)' }}>Family Sharing</span>
               </li>
             </ul>
-            <button className="w-full btn-modern button-float">Get Family Pack</button>
+            <button onClick={()=>navigate('/buysticker')} className="w-full btn-modern button-float">Get Family Pack</button>
           </div>
 
           {/* Business Plan */}
@@ -128,7 +159,7 @@ const Pricing = () => {
             <div className="pricing-header fade-in-up">
               <h3 className="text-2xl font-bold text-white mb-4">Business</h3>
               <div className="mb-8 price-bounce">
-                <span className="text-5xl font-bold text-white">₹999</span>
+                <span className="text-5xl font-bold text-white">₹1,950</span>
                 <span style={{ color: 'var(--medium-gray)' }}>/pack</span>
               </div>
             </div>

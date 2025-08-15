@@ -161,45 +161,49 @@ export const initorder = () => {
 
 
     function updateOrderSummary() {
-        if (!selectedPackage) return;
+    if (!selectedPackage) return;
 
-        const packagePrice = selectedPackage.price;
-        const shipping = 49;
-        const gst = Math.round((packagePrice + shipping) * 0.18);
-        const total = packagePrice + shipping + gst;
+    const packagePriceInclGST = selectedPackage.price; 
+    const basePrice = +(packagePriceInclGST / 1.18).toFixed(2); 
+    const gstAmount = +(packagePriceInclGST - basePrice).toFixed(2); 
+    const shipping = 20; 
+    const total = packagePriceInclGST + shipping;
+    document.getElementById('selected-package').style.display = 'block';
+    document.getElementById('package-name').textContent = selectedPackage.displayName;
+    document.getElementById('package-description').textContent = selectedPackage.description;
+    document.getElementById('package-price').textContent = `₹${basePrice}`;
+    document.getElementById('gst-amount').textContent = `₹${gstAmount}`;
+    document.getElementById('total-amount').textContent = `₹${total}`;
 
-        document.getElementById('selected-package').style.display = 'block';
-        document.getElementById('package-name').textContent = selectedPackage.displayName;
-        document.getElementById('package-description').textContent = selectedPackage.description;
-        document.getElementById('package-price').textContent = `₹${packagePrice}`;
-        document.getElementById('gst-amount').textContent = `₹${gst}`;
-        document.getElementById('total-amount').textContent = `₹${total}`;
+    const features = {
+        basic: [
+            '• 1 Premium weather-resistant sticker',
+            '• Basic profile setup',
+            '• SMS notifications',
+            '• Email support',
+            '• 10% cheaper than competitor'
+        ],
+        family: [
+            '• 5 Premium weather-resistant stickers',
+            '• Advanced profile features',
+            '• All notification types',
+            '• Priority support',
+            '• Family sharing features',
+            '• Save ₹200+ vs buying singles'
+        ],
+        business: [
+            '• 10 Premium weather-resistant stickers',
+            '• Business profile features',
+            '• All notification types',
+            '• 24/7 priority support',
+            '• Analytics dashboard',
+            '• Save ₹550+ vs competitor'
+        ]
+    };
 
-        const features = {
-            basic: [
-                '• 1 Premium weather-resistant sticker',
-                '• Basic profile setup',
-                '• SMS notifications',
-                '• Email support'
-            ],
-            family: [
-                '• 5 Premium weather-resistant stickers',
-                '• Advanced profile features',
-                '• All notification types',
-                '• Priority support',
-                '• Family sharing features'
-            ],
-            business: [
-                '• 15 Premium weather-resistant stickers',
-                '• Business profile features',
-                '• All notification types',
-                '• 24/7 priority support',
-                '• Analytics dashboard'
-            ]
-        };
+    document.getElementById('package-features').innerHTML = features[selectedPackage.name].join('<br>');
+}
 
-        document.getElementById('package-features').innerHTML = features[selectedPackage.name].join('<br>');
-    }
 
     function validatePersonalInfo() {
         const required = ['firstName', 'lastName', 'email', 'phone'];
