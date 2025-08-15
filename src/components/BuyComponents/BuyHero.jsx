@@ -6,6 +6,7 @@ const BuyHero = () => {
      useEffect(() => {
     setTimeout(() => {
         initorder();
+         window.scrollTo(0, 0);
     }, 0); 
 }, []);
     
@@ -27,22 +28,23 @@ const BuyHero = () => {
         </div>
 
             {/* Progress Steps */}
-        <div className="max-w-4xl mx-auto mb-12 fade-in">
-          <div className="flex justify-center space-x-8">
-            <div className="progress-step">
-              <div className="step-number active">1</div>
-              <div className="step-text active">Select Package</div>
-            </div>
-            <div className="progress-step">
-              <div className="step-number" id="step2">2</div>
-              <div className="step-text" id="step2-text">Your Information</div>
-            </div>
-            <div className="progress-step">
-              <div className="step-number" id="step3">3</div>
-              <div className="step-text" id="step3-text">Complete Order</div>
-            </div>
-          </div>
-        </div>
+       <div className="max-w-4xl mx-auto mb-12 px-4">
+  <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-8 space-y-4 sm:space-y-0">
+    <div className="progress-step flex flex-col sm:flex-row items-center sm:space-x-2">
+      <div className="step-number active">1</div>
+      <div className="step-text active text-center sm:text-left">Select Package</div>
+    </div>
+    <div className="progress-step flex flex-col sm:flex-row items-center sm:space-x-2">
+      <div className="step-number" id="step2">2</div>
+      <div className="step-text text-center sm:text-left" id="step2-text">Your Information</div>
+    </div>
+    <div className="progress-step flex flex-col sm:flex-row items-center sm:space-x-2">
+      <div className="step-number" id="step3">3</div>
+      <div className="step-text text-center sm:text-left" id="step3-text">Complete Order</div>
+    </div>
+  </div>
+</div>
+
 
               <div className="grid lg:grid-cols-3 gap-12">
                 {/* <!-- Left Column - Order Form --> */}
