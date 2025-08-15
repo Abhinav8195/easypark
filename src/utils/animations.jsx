@@ -76,7 +76,7 @@ export const initAnimations = () => {
     button.addEventListener('click', () => {
       const text = button.textContent.trim();
       if (text.includes('Get Started')) document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
-      else alert(`Button clicked: ${text}`);
+      // else alert(`Button clicked: ${text}`);
     });
   });
 
