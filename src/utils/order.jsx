@@ -116,6 +116,10 @@ export const initorder = () => {
     });
 
     function updateStep() {
+         window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
         document.getElementById('package-selection').style.display = 'none';
         document.getElementById('personal-info').style.display = 'none';
         document.getElementById('shipping-info').style.display = 'none';
