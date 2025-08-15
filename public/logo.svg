@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <!-- Background Circle -->
+  <circle cx="128" cy="128" r="120" fill="#000000"></circle>
+
+  <!-- P Letter for Parking -->
+  <path d="M90 70H140C165 70 185 90 185 115C185 140 165 160 140 160H110V190H90V70Z" fill="#D1D0D0"></path>
+
+  <!-- Inner Road Circle -->
+  <circle cx="128" cy="128" r="80" stroke="#988686" stroke-width="6" stroke-dasharray="12,8"></circle>
+
+  <!-- Accent Ring -->
+  <circle cx="128" cy="128" r="118" stroke="#5C4E4E" stroke-width="4"></circle>
+</svg>

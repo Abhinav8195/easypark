@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <!-- Background Circle -->
+  <circle cx="128" cy="128" r="120" fill="#4CAF50"></circle>
+  
+  <!-- P Letter for Parking -->
+  <path d="M90 70H140C165 70 185 90 185 115C185 140 165 160 140 160H110V190H90V70Z" fill="white"></path>
+  
+  <!-- Inner Road Circle -->
+  <circle cx="128" cy="128" r="80" stroke="white" stroke-width="6" stroke-dasharray="12,8"></circle>
+</svg>
